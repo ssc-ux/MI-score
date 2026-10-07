@@ -24,6 +24,7 @@
   --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
   --zone1:#15291f;--zone2:#2e2614;--zone3:#35231a;--zone4:#3a1d1b;color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--police)}
 .page{max-width:900px;margin:0 auto;padding:0 16px 64px}
 h1,h3{margin:0;line-height:1.2;text-wrap:balance}
@@ -109,10 +110,22 @@ th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
 th{font-weight:600;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
 td.c{text-align:center}
 .oui{color:var(--succes);font-weight:700}.non{color:var(--muted)}
+/* Navigation pathologie → outil */
+.fil{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:12px;font-size:.9rem;color:var(--muted);min-height:24px}
+.fil button{border:0;background:none;padding:0;color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+.recherche{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--rayon);background:var(--card);color:var(--fg);font:inherit;margin-bottom:12px}
+.outils{display:grid;gap:8px}
+.outil{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border:1px solid var(--line);border-left:4px solid var(--t);border-radius:10px;background:var(--card);color:var(--fg);font:inherit;text-align:left;cursor:pointer}
+.outil:hover{border-color:var(--accent);border-left-color:var(--t)}
+.outil span{flex:1;min-width:0;font-weight:600}
+.outil em{font-style:normal;color:var(--muted);font-size:.8rem}
+.vide{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:20px;display:grid;gap:4px}
 /* Catalogue */
-.tuiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.tuile{border:1px solid color-mix(in srgb,var(--t) 30%,var(--line));border-top:4px solid var(--t);border-radius:12px;background:color-mix(in srgb,var(--t) 9%,var(--card));padding:12px 14px;display:grid;gap:6px;align-content:start}
-.tuile h3{font-size:.95rem}
+.tuiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tuile{min-height:92px;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:transform .15s,box-shadow .15s;border:1px solid color-mix(in srgb,var(--t) 30%,var(--line));border-top:4px solid var(--t);border-radius:12px;background:color-mix(in srgb,var(--t) 9%,var(--card));padding:12px 14px;display:grid;gap:6px;align-content:start}
+.tuile:hover,.tuile:focus-visible{transform:translateY(-2px);box-shadow:0 4px 14px color-mix(in srgb,var(--t) 25%,transparent)}
+.tuile b{font-size:.95rem;font-weight:600;line-height:1.3;hyphens:auto}
+.tuile small{color:var(--accent);font-size:.82rem;font-weight:500}
 .tuile ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:.85rem}
 .tuile li{display:flex;justify-content:space-between;gap:8px}
 .tuile li em{font-style:normal;color:var(--muted);font-size:.75rem;white-space:nowrap}
@@ -129,7 +142,7 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
 <header class="top">
   <h1><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f5fbf"/><path d="M14 44a18 18 0 0 1 36 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32 44l9-12" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg> MI-score</h1>
   <nav class="tabs" aria-label="Sections">
-    <a href="#concepts" class="actif">Concepts</a><a href="#demo">Démo</a><a href="#graphiques">Graphiques</a><a href="#catalogue">Catalogue</a><a href="#technique">Technique</a>
+    <a href="#concepts" class="actif">Concepts</a><a href="#demo">Démo</a><a href="#technique">Technique</a>
   </nav>
 </header>
 
@@ -137,7 +150,7 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
   <p>Un site pour les internistes qui réunit les scores, les critères diagnostiques et les critères de classification sous forme de calculateurs, chacun avec sa référence. Même socle et même charte que <b>CorticoPlan</b> : tokens, tuiles, onglets, thème clair et sombre, fonctionnement hors ligne, rien n'est envoyé.</p>
   <div class="equipe">
     <div class="membre"><span class="puce">Interniste</span><b>Contenu médical</b><span class="discret">38 outils en 8 familles, 10 pour la première version, pièges de saisie, modèle de données</span></div>
-    <div class="membre"><span class="puce">UX</span><b>Concepts et écrans</b><span class="discret">3 concepts, anatomie d'un calculateur, 6 graphiques, 5 fonctions qui démarquent le site</span></div>
+    <div class="membre"><span class="puce">UX</span><b>Concepts et écrans</b><span class="discret">3 concepts, anatomie d'un calculateur, parcours en 3 gestes, 5 fonctions qui démarquent le site</span></div>
     <div class="membre"><span class="puce">Architecte</span><b>Socle commun</b><span class="discret">Stack Svelte reprise de CorticoPlan, moteur générique en JSON, socle partagé, dette à corriger</span></div>
   </div>
 </div>
@@ -151,11 +164,11 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
         <div class="mini-champ">Rechercher un score, un critère… (BVAS, Wegener)</div>
         <div class="mini-tabs"><span>Catalogue</span><span>Favoris</span><span>Récents</span></div>
         <div class="mini-tuiles">
-          <span style="--t:var(--s1)">Vascularites</span><span style="--t:var(--s2)">Connectivites</span><span style="--t:var(--s3)">Rhumato</span>
-          <span style="--t:var(--s4)">Hémato · MAT</span><span style="--t:var(--s5)">Auto-inflam.</span><span style="--t:var(--s7)">Thrombose</span>
+          <span style="--t:var(--s1)">Artérite à cellules géantes</span><span style="--t:var(--s2)">Lupus</span><span style="--t:var(--s1)">Vascularites à ANCA</span>
+          <span style="--t:var(--s2)">SAPL</span><span style="--t:var(--s4)">SAM</span><span style="--t:var(--s5)">Still</span>
         </div>
       </div>
-      <ul><li>Grille de tuiles colorées par famille : l'ADN de CorticoPlan</li><li>Barre de recherche toujours visible, tolérante aux fautes et aux synonymes</li><li>Pour l'interne qui explore comme pour le senior pressé</li></ul>
+      <ul><li>3 gestes : la pathologie, puis l'outil, puis le calcul</li><li>Tuiles par pathologie, colorées par famille, comme dans CorticoPlan</li><li>Barre de recherche toujours visible, tolérante aux fautes et aux synonymes</li><li>Pour l'interne qui explore comme pour le senior pressé</li></ul>
     </article>
     <article class="concept">
       <h3>B · Palette</h3>
@@ -178,8 +191,15 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
 </section>
 
 <section id="demo">
-  <h2>Démo : écran calculateur (fonctionnel)</h2>
-  <div class="demo">
+  <h2>Démo : pathologie, puis outil, puis calcul</h2>
+  <nav class="fil" id="fil" aria-label="Fil d'Ariane"></nav>
+  <div id="v-pathos">
+    <input class="recherche" id="recherche" type="search" placeholder="Rechercher une pathologie ou un score (ex. HScore, Wegener)" aria-label="Rechercher">
+    <div class="tuiles" id="tuiles"></div>
+  </div>
+  <div id="v-outils" hidden><div class="outils" id="outils"></div></div>
+  <div id="v-vide" hidden class="vide"><p><b id="vide-nom"></b></p><p class="discret">Fiche à écrire. Elle utilisera le même écran que la démo ACG 2022.</p></div>
+  <div class="demo" id="v-calc" hidden>
     <div>
       <div class="entete-score"><h3>Artérite à cellules géantes</h3><span class="puce">ACR/EULAR 2022</span><span class="puce att">Classification</span></div>
       <label class="entree"><input type="checkbox" id="entree" checked> Critère d'entrée : âge ≥ 50 ans au diagnostic</label>
@@ -187,7 +207,8 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
     </div>
     <aside class="resultat" aria-live="polite">
       <div class="total"><b id="total">0</b><span class="discret">/ 25 points · seuil ≥ 6</span></div>
-      <svg id="jauge" viewBox="0 0 268 64" role="img" aria-label="Jauge du score"></svg>
+      <svg id="jauge" viewBox="0 0 268 64" role="img" aria-label="Jauge du score, points par domaine"></svg>
+      <div class="legende"><span><i style="background:var(--s1)"></i>Clinique</span><span><i style="background:var(--s2)"></i>Biologie, imagerie, biopsie</span></div>
       <div id="statut" class="statut">Non classée</div>
       <p id="manque" class="discret"></p>
       <div class="courrier" id="courrier"></div>
@@ -197,44 +218,7 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
   </div>
 </section>
 
-<section id="graphiques">
-  <h2>Graphiques proposés (exemples fictifs)</h2>
-  <div class="graphes">
-    <figure>
-      <figcaption><b>D'où viennent les points</b><span class="discret">Lupus, EULAR/ACR 2019 : un seul poids, le plus fort, retenu par domaine</span></figcaption>
-      <svg id="g-empile" viewBox="0 0 400 120" role="img" aria-label="Barre empilée par domaine"></svg>
-      <div class="legende" id="l-empile"></div>
-    </figure>
-    <figure>
-      <figcaption><b>Comparer les versions</b><span class="discret">Lupus, performances dans la cohorte de validation (Aringer 2019)</span></figcaption>
-      <svg id="g-versions" viewBox="0 0 400 150" role="img" aria-label="Sensibilité et spécificité par version"></svg>
-      <div class="legende" id="l-versions"></div>
-    </figure>
-    <figure>
-      <figcaption><b>Suivi de l'activité</b><span class="discret">SLEDAI-2K daté, gardé sur l'appareil, sans nom</span></figcaption>
-      <svg id="g-suivi" viewBox="0 0 400 190" role="img" aria-label="Évolution du SLEDAI-2K"></svg>
-    </figure>
-    <figure>
-      <figcaption><b>Version par version</b><span class="discret">Quels items comptent dans quelle version</span></figcaption>
-      <div class="tbl"><table>
-        <thead><tr><th>Item</th><th>ACR 1997</th><th>SLICC 2012</th><th>EULAR/ACR 2019</th></tr></thead>
-        <tbody>
-          <tr><td>AAN obligatoire</td><td class="c non">–</td><td class="c non">–</td><td class="c oui">entrée</td></tr>
-          <tr><td>Fièvre</td><td class="c non">–</td><td class="c non">–</td><td class="c oui">2 pts</td></tr>
-          <tr><td>Alopécie non cicatricielle</td><td class="c non">–</td><td class="c oui">✓</td><td class="c oui">2 pts</td></tr>
-          <tr><td>Complément bas</td><td class="c non">–</td><td class="c oui">✓</td><td class="c oui">3–4 pts</td></tr>
-          <tr><td>Coombs direct +</td><td class="c non">–</td><td class="c oui">✓</td><td class="c non">–</td></tr>
-          <tr><td>Photosensibilité</td><td class="c oui">✓</td><td class="c non">–</td><td class="c non">–</td></tr>
-        </tbody>
-      </table></div>
-    </figure>
-  </div>
-</section>
 
-<section id="catalogue">
-  <h2>Catalogue : 38 outils, ★ = première version (10)</h2>
-  <div class="tuiles" id="tuiles"></div>
-</section>
 
 <section id="technique">
   <h2>Règles médicales, fonctionnalités, technique</h2>
@@ -304,17 +288,17 @@ const zone=document.getElementById('items');
 DOM.forEach((d,di)=>{const b=document.createElement('div');b.className='domaine';
  b.innerHTML=`<h4><span>${d.id}</span><span id="sd${di}">0 pt</span></h4>`+d.items.map((it,i)=>`<label class="item"><input type="checkbox" id="i${di}-${i}" data-d="${di}" data-p="${it[1]}"${(di==0&&i==0)||(di==1&&i==0)||(di==0&&i==3)?' checked':''}><span>${it[0]}</span><b class="pts">+${it[1]}</b></label>`).join('');zone.appendChild(b)});
 const SEUIL=6,MAX=25;
-function jauge(tot,ok){const s=document.getElementById('jauge');s.innerHTML='';const W=250,x0=9,sc=v=>x0+v/MAX*W;
+function jauge(tot,ok,sdom){const s=document.getElementById('jauge');s.innerHTML='';const W=250,x0=9,sc=v=>x0+v/MAX*W;
  el('rect',{x:x0,y:16,width:sc(SEUIL)-x0-1,height:12,rx:4,fill:'var(--zone4)'},s);
  el('rect',{x:sc(SEUIL)+1,y:16,width:x0+W-sc(SEUIL)-1,height:12,rx:4,fill:'var(--zone1)'},s);
- if(tot>0)el('rect',{x:x0,y:19,width:Math.max(4,sc(tot)-x0),height:6,rx:3,fill:ok?'var(--succes)':'var(--accent)'},s);
+ let x=x0;sdom.forEach((v,i)=>{if(!v)return;el('rect',{x:x+1,y:18,width:Math.max(3,sc(v)-x0-2),height:8,rx:3,fill:`var(--s${i+1})`,'data-tip':`${DOM[i].id} : ${v} pts`},s);x+=sc(v)-x0});
  el('line',{x1:sc(SEUIL),x2:sc(SEUIL),y1:10,y2:34,stroke:'var(--fg)','stroke-width':2},s);
  txt(s,sc(SEUIL),48,'seuil 6',{'text-anchor':'middle',class:'fort'});txt(s,x0,48,'0');txt(s,x0+W,48,'25',{'text-anchor':'end'})}
 function maj(){const entree=document.getElementById('entree').checked;zone.classList.toggle('desactive',!entree);
  let tot=0;const sd=[0,0],pos=[];document.querySelectorAll('#items input').forEach(c=>{if(c.checked){const p=+c.dataset.p;tot+=p;sd[c.dataset.d]+=p;pos.push(c.nextElementSibling.textContent)}});
  sd.forEach((v,i)=>document.getElementById('sd'+i).textContent=v+' pt'+(v>1?'s':''));
  const ok=entree&&tot>=SEUIL,st=document.getElementById('statut');
- document.getElementById('total').textContent=entree?tot:'–';jauge(entree?tot:0,ok);
+ document.getElementById('total').textContent=entree?tot:'–';jauge(entree?tot:0,ok,entree?sd:[0,0]);
  st.className='statut'+(entree?(ok?' ok':''):' na');st.textContent=!entree?'Non applicable : critère d\'entrée absent':ok?'✓ Classée ACG (≥ 6)':'✗ Non classée (< 6)';
  document.getElementById('manque').textContent=entree&&!ok?`Il manque ${SEUIL-tot} point${SEUIL-tot>1?'s':''}. Un halo à l'échographie (+5) ou une VS/CRP élevée (+3) peut suffire.`:'';
  document.getElementById('courrier').textContent=entree?`Critères ACR/EULAR 2022 de l'ACG : ${tot}/25 (seuil ≥ 6), ${ok?'classée':'non classée'}. Items présents : ${pos.join(', ')||'aucun'}. (Ponte, Ann Rheum Dis 2022)`:'Critère d\'entrée non rempli (âge < 50 ans).'}
@@ -323,47 +307,52 @@ document.getElementById('raz').onclick=()=>{document.querySelectorAll('#items in
 document.getElementById('copier').onclick=async e=>{const t=document.getElementById('courrier');try{await navigator.clipboard.writeText(t.textContent);e.target.textContent='Copié'}catch{const r=document.createRange();r.selectNodeContents(t);getSelection().removeAllRanges();getSelection().addRange(r);e.target.textContent='Texte sélectionné'}setTimeout(()=>e.target.textContent='Copier pour le courrier',1600)};
 maj();
 
-/* ---------- Barre empilée LES 2019 ---------- */
-(()=>{const D=[['Articulaire',6,'var(--s1)'],['Anticorps anti-ADNdb',6,'var(--s2)'],['Complément C3 et C4 bas',4,'var(--s3)'],['Hémato : leucopénie',3,'var(--s4)']];
- const s=document.getElementById('g-empile'),MAXX=24,x0=8,W=384,sc=v=>v/MAXX*W;let x=x0;
- D.forEach(([n,v,c])=>{const r=el('rect',{x:x+1,y:30,width:sc(v)-2,height:32,rx:4,fill:c,'data-tip':`${n} : ${v} points`},s);
-  txt(s,x+sc(v)/2,51,v,{'text-anchor':'middle',class:'fort',style:'fill:#fff;pointer-events:none'});x+=sc(v)});
- const xs=x0+sc(10);el('line',{x1:xs,x2:xs,y1:22,y2:70,stroke:'var(--fg)','stroke-width':2,'stroke-dasharray':'4 3'},s);
- txt(s,xs,16,'seuil 10',{'text-anchor':'middle',class:'fort'});txt(s,x,88,'total 19',{'text-anchor':'end',class:'fort'});
- txt(s,x0,88,'0');txt(s,x0+W,88,'24',{'text-anchor':'end'});
- document.getElementById('l-empile').innerHTML=D.map(d=>`<span><i style="background:${d[2]}"></i>${d[0]}</span>`).join('')})();
-
-/* ---------- Comparaison de versions (points) ---------- */
-(()=>{const V=[['ACR 1997',82.8,93.4,'var(--s1)'],['SLICC 2012',96.7,83.7,'var(--s2)'],['EULAR/ACR 2019',96.1,93.4,'var(--s3)']];
- const s=document.getElementById('g-versions'),x0=92,W=290,sc=v=>x0+(v-80)/20*W;
- [80,85,90,95,100].forEach(t=>{el('line',{x1:sc(t),x2:sc(t),y1:14,y2:118,stroke:'var(--line)'},s);txt(s,sc(t),136,t+' %',{'text-anchor':'middle'})});
- [['Sensibilité',1,40],['Spécificité',2,92]].forEach(([lab,k,y])=>{txt(s,0,y+4,lab,{class:'fort'});
-  const vals=V.map(v=>v[k]);el('line',{x1:sc(Math.min(...vals)),x2:sc(Math.max(...vals)),y1:y,y2:y,stroke:'var(--line)','stroke-width':4,'stroke-linecap':'round'},s);
-  V.forEach((v,i)=>{const dy=(i-1)*8;el('circle',{cx:sc(v[k]),cy:y+dy,r:6,fill:v[3],stroke:'var(--card)','stroke-width':2,'data-tip':`${v[0]} · ${lab} ${String(v[k]).replace('.',',')} %`},s)})});
- document.getElementById('l-versions').innerHTML=V.map(v=>`<span><i style="background:${v[3]};border-radius:50%"></i>${v[0]}</span>`).join('')})();
-
-/* ---------- Suivi SLEDAI-2K ---------- */
-(()=>{const P=[['J0',14],['M1',10],['M3',6],['M6',4],['M9',2],['M12',4]],B=[[0,5.5,'var(--zone2)','faible'],[5.5,10.5,'var(--zone3)','modérée'],[10.5,20,'var(--zone4)','forte']];
- const s=document.getElementById('g-suivi'),x0=34,W=300,y0=160,H=140,sx=i=>x0+i/(P.length-1)*W,sy=v=>y0-v/20*H;
- B.forEach(([a,b,c,n])=>{el('rect',{x:x0,y:sy(b),width:W,height:sy(a)-sy(b),fill:c},s);txt(s,x0+W+6,(sy(a)+sy(b))/2+4,n)});
- [0,5,10,15,20].forEach(t=>txt(s,x0-6,sy(t)+4,t,{'text-anchor':'end'}));
- el('polyline',{points:P.map((p,i)=>sx(i)+','+sy(p[1])).join(' '),fill:'none',stroke:'var(--accent)','stroke-width':2,'stroke-linejoin':'round'},s);
- P.forEach((p,i)=>{txt(s,sx(i),y0+18,p[0],{'text-anchor':'middle'});const last=i==P.length-1;
-  el('circle',{cx:sx(i),cy:sy(p[1]),r:last?6:4.5,fill:'var(--accent)',stroke:'var(--card)','stroke-width':2,'data-tip':`${p[0]} : SLEDAI-2K ${p[1]}`},s);
-  if(i==0||last)txt(s,sx(i),sy(p[1])-11,p[1],{'text-anchor':'middle',class:'fort'})})})();
-
-/* ---------- Catalogue ---------- */
-const CAT=[
- ['Vascularites','s1',[['ACG ACR/EULAR 2022',1,'C'],['GPA 2022',0,'C'],['EGPA 2022',0,'C'],['PAM 2022',0,'C'],['Takayasu 2022',0,'C'],['FFS 2009',1,'P'],['BVAS v3',0,'A'],['Behçet ICBD',0,'C']]],
- ['Connectivites','s2',[['LES EULAR/ACR 2019',1,'C'],['SLICC 2012',0,'C'],['SLEDAI-2K',1,'A'],['SAPL ACR/EULAR 2023',1,'C'],['ScS ACR/EULAR 2013',1,'C'],['Myosites 2017',0,'C'],['Sjögren 2016',0,'C'],['ESSDAI',0,'A']]],
- ['Rhumato-inflammatoire','s3',[['PR 2010',0,'C'],['DAS28',0,'A'],['CASPAR',0,'C'],['ASAS axiale',0,'C'],['PPR 2012',0,'C'],['IgG4-RD 2019',0,'C'],['Sarcoïdose WASOG',0,'D']]],
- ['Hémato · MAT · SAM','s4',[['HScore',1,'S'],['HLH-2004',0,'D'],['PLASMIC',1,'S'],['4T',1,'S'],['CIVD ISTH',0,'D']]],
- ['Auto-inflammatoires','s5',[['Yamaguchi',1,'C'],['Fautrel',0,'C'],['Eurofever/PRINTO',0,'C']]],
- ['Thrombose · EP','s7',[['Wells EP',0,'S'],['Genève révisé',0,'S'],['PESI / sPESI',0,'P']]],
- ['Infectiologie','s8',[['SOFA / qSOFA',0,'P'],['Duke-ISCVID 2023',0,'D']]],
- ['Général','s6',[['CKD-EPI 2021',0,'Calcul'],['Charlson',0,'P']]]];
+/* ---------- Navigation : pathologie → outil → calcul ---------- */
+const F={vasc:'s1',conn:'s2',rhum:'s3',hema:'s4',auto:'s5',thromb:'s7',infec:'s8',gen:'s6'};
+const PATHOS=[
+ ['Artérite à cellules géantes','vasc',[['ACR/EULAR 2022','C',1,'acg']]],
+ ['Vascularites à ANCA','vasc',[['GPA ACR/EULAR 2022','C'],['EGPA ACR/EULAR 2022','C'],['PAM ACR/EULAR 2022','C'],['FFS 2009','P',1],['BVAS v3','A']]],
+ ['Takayasu','vasc',[['ACR/EULAR 2022','C']]],
+ ['Behçet','vasc',[['ICBD 2014','C']]],
+ ['Lupus','conn',[['EULAR/ACR 2019','C',1],['SLICC 2012','C'],['SLEDAI-2K','A',1]]],
+ ['SAPL','conn',[['ACR/EULAR 2023','C',1],['Sydney 2006','C']]],
+ ['Sclérodermie','conn',[['ACR/EULAR 2013','C',1]]],
+ ['Myosites','conn',[['EULAR/ACR 2017','C']]],
+ ['Sjögren','conn',[['ACR/EULAR 2016','C'],['ESSDAI','A']]],
+ ['Polyarthrite rhumatoïde','rhum',[['ACR/EULAR 2010','C'],['DAS28','A']]],
+ ['Spondyloarthrites','rhum',[['ASAS axiale','C'],['CASPAR','C']]],
+ ['Pseudopolyarthrite rhizomélique','rhum',[['EULAR/ACR 2012','C']]],
+ ['Maladie à IgG4','rhum',[['ACR/EULAR 2019','C']]],
+ ['Sarcoïdose','rhum',[['WASOG 2014','D']]],
+ ['Maladie de Still','auto',[['Yamaguchi','C',1],['Fautrel','C']]],
+ ['Fièvres récurrentes','auto',[['Eurofever/PRINTO','C']]],
+ ['SAM / lymphohistiocytose','hema',[['HScore','S',1],['HLH-2004','D']]],
+ ['Microangiopathie thrombotique','hema',[['PLASMIC','S',1]]],
+ ['Thrombopénie à l\'héparine','hema',[['4T','S',1]]],
+ ['CIVD','hema',[['ISTH','D']]],
+ ['Embolie pulmonaire','thromb',[['Wells','S'],['Genève révisé','S'],['PESI / sPESI','P']]],
+ ['Sepsis','infec',[['SOFA / qSOFA','P']]],
+ ['Endocardite','infec',[['Duke-ISCVID 2023','D']]],
+ ['Outils généraux','gen',[['CKD-EPI 2021','Calcul'],['Charlson','P']]]];
 const TYPES={C:'classification',D:'diagnostic',S:'probabilité',A:'activité',P:'pronostic',Calcul:'calcul'};
-document.getElementById('tuiles').innerHTML=CAT.map(([n,c,l])=>`<div class="tuile" style="--t:var(--${c})"><h3>${n}</h3><ul>${l.map(([x,m,t])=>`<li><span${m?' class="mvp"':''}>${x}</span><em>${TYPES[t]}</em></li>`).join('')}</ul></div>`).join('');
+const vues={pathos:'v-pathos',outils:'v-outils',calc:'v-calc',vide:'v-vide'};
+const fil=document.getElementById('fil');
+function voir(v,p,o){for(const k in vues)document.getElementById(vues[k]).hidden=k!==v;
+ fil.innerHTML=v==='pathos'?'<span>Toucher une pathologie</span>':`<button data-nav="pathos">Pathologies</button><span>›</span>`+(v==='outils'?`<span>${p[0]}</span>`:`<button data-nav="outils">${p[0]}</button><span>›</span><span>${o[0]}</span>`);
+ fil.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>b.dataset.nav==='pathos'?voir('pathos'):ouvrir(p));
+ if(v==='vide')document.getElementById('vide-nom').textContent=`${p[0]} · ${o[0]}`}
+function ouvrir(p){if(p[2].length===1)return outil(p,p[2][0]);
+ document.getElementById('outils').innerHTML=p[2].map((o,i)=>`<button class="outil" style="--t:var(--${F[p[1]]})" data-i="${i}"><span${o[2]?' class="mvp"':''}>${o[0]}</span><em>${TYPES[o[1]]}</em></button>`).join('');
+ document.querySelectorAll('#outils .outil').forEach(b=>b.onclick=()=>outil(p,p[2][b.dataset.i]));voir('outils',p)}
+function outil(p,o){voir(o[3]==='acg'?'calc':'vide',p,o)}
+function tuiles(q=''){const n=q.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),norm=t=>t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const SYN={wegener:'gpa',horton:'cellules geantes',churg:'egpa',tth:'microangiopathie',sam:'sam'};const nn=SYN[n]||n;
+ const liste=PATHOS.filter(p=>!nn||norm(p[0]).includes(nn)||p[2].some(o=>norm(o[0]).includes(nn)));
+ const t=document.getElementById('tuiles');t.innerHTML=liste.map(p=>{const k=PATHOS.indexOf(p),c=p[2].length,m=p[2].filter(o=>o[2]).length;
+  return `<button class="tuile" style="--t:var(--${F[p[1]]})" data-k="${k}"><b>${p[0]}</b><small>${c} outil${c>1?'s':''}${m?' · '+m+' ★':''}</small></button>`}).join('')||'<p class="discret">Aucun résultat.</p>';
+ t.querySelectorAll('.tuile').forEach(b=>b.onclick=()=>ouvrir(PATHOS[b.dataset.k]))}
+document.getElementById('recherche').addEventListener('input',e=>tuiles(e.target.value.trim()));
+tuiles();voir('pathos');
 
 /* Onglet actif au défilement */
 const liens=[...document.querySelectorAll('.tabs a')];
