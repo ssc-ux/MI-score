@@ -34,6 +34,8 @@ p{margin:0}
 .discret{color:var(--muted);font-size:.875rem}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:0 -16px;padding:14px 16px 0;border-bottom:1px solid var(--line)}
 .top h1{display:flex;align-items:center;gap:8px;font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.mit{display:inline-block;margin:0 0 8px;font-size:.8rem;font-weight:500;color:var(--muted);text-decoration:none}
+.mit:hover{color:var(--fg)}
 .top h1 svg{border-radius:5px}
 .tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none}
 .tabs a{color:var(--muted);padding:10px 0;border-bottom:2px solid transparent;text-decoration:none;white-space:nowrap;font-weight:500}
@@ -140,6 +142,7 @@ ol.feuille{margin:0;padding-left:1.2rem;display:grid;gap:8px}
 
 <div class="page">
 <header class="top">
+  <a class="mit" href="https://ssc-ux.github.io/MedInt-Tools/" title="Retour à MedInt Tools">‹ MedInt Tools</a>
   <h1><svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f5fbf"/><path d="M14 44a18 18 0 0 1 36 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M32 44l9-12" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg> MI-score</h1>
   <nav class="tabs" aria-label="Sections">
     <a href="#concepts" class="actif">Concepts</a><a href="#demo">Démo</a><a href="#technique">Technique</a>
